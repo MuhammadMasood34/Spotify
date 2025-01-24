@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volume Control</title>
+    <style>
+        body {
+            background-color: #FAEBD7; /* Matching the background color */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #controls {
+            display: flex;
+            gap: 5px;
+        }
+        #volumeBarContainer {
+            width: 100px;
+            height: 20px;
+            background-color: #ccc;
+            border: 1px solid red;
+            position: relative;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        #volumeBar {
+            height: 100%;
+            width: 50%;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <audio id="audioPlayer" src="Satranga (Animal)-(Mr-Jat.in).mp3"></audio>
+    
+    <div id="controls">
+        <button id="playBtn">Play</button>
+        <button id="pauseBtn">Pause</button>
+        <button id="stopBtn">Stop</button>
+    </div>
+    <div id="volumeBarContainer">
+        <div id="volumeBar"></div>
+    </div>
+    <div id="currentVolume">Volume: 50%</div>
+
+    <script>
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playBtn = document.getElementById('playBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const volumeBarContainer = document.getElementById('volumeBarContainer');
+        const volumeBar = document.getElementById('volumeBar');
+        const currentVolume = document.getElementById('currentVolume');
+        let isDragging = false;
+
+        // Play the audio
+        playBtn.addEventListener('click', () => {
+            audioPlayer.play();
+        });
+
+        // Pause the audio
+        pauseBtn.addEventListener('click', () => {
+            audioPlayer.pause();
+        });
+
+        // Stop the audio
+        stopBtn.addEventListener('click', () => {
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        });
+
+        // Function to update volume
+        function updateVolume(e) {
+            const rect = volumeBarContainer.getBoundingClientRect();
+            let offsetX = e.clientX - rect.left;
+            if (offsetX < 0) offsetX = 0;
+            if (offsetX > rect.width) offsetX = rect.width;
+            console.log('Adjusted offsetX:', offsetX);
+            const volume = offsetX / rect.width;
+            volumeBar.style.width = volume * 100 + '%';
+            currentVolume.textContent = 'Volume: ' + Math.round(volume * 100) + '%';
+            audioPlayer.volume = volume;
+        }
+
+        // Handle mouse down event
+        volumeBarContainer.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            updateVolume(e);
+            console.log(e);
+        });
+
+        /* These event listeners are attached to the window to handle dragging and stopping the drag anywhere on the screen.*/
+
+        // Handle mouse move event
+        window.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                updateVolume(e);
+                console.log(e);
+              
+                
+            }
+        });
+
+        // Handle mouse up event
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+    </script>
+</body>
+</html>

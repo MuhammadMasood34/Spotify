@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="header-container">
+        <section class="HomeSection">
+            <div class="Spotify-bar">
+                <img id="Spotify-icon" src="spotify.png" alt="#">
+                <button id="Spotify-button">Spotify</button>
+            </div>
+            <div class="home-bar">
+                <img id="home-icon" src="home (2).png" alt="#">
+                <button id="home-button" onclick="testing()">Home</button>
+            </div>
+            <div class="search-bar">
+                <img id="search-icon" src="search.png" alt="#">
+                <button id="search-button">Search</button>
+            </div>
+
+        </section>
+
+        <header class="header-right">
+            <div class="SearchingBar">
+                <img src="search.png" alt="#">
+                <input type="text" id="InputBar" onkeyup="Searching()" placeholder="What do you want to play">
+            </div>
+            <div class="TopHeaderbuttons">
+                <button id="btn1">Sign up</button>
+                <button id="btn2">Log in</button>
+            </div>
+
+        </header>
+    </div>
+    <div class="content-container">
+        <aside class="majorside-bar">
+            <div class="innerLHSideBar1">
+
+                <div class="fstContainer">
+                    <a href="#">
+                        <img src="images/address-book-new.256x256.png" alt="#" id="library-icon">
+                        Your Library
+                    </a>
+                    <img src="plus.252x256.png" alt="#" id="plus-icon">
+                </div>
+                <div class="CreateplaylistButtonContainer">
+                    <h3>Create your first Playlist</h3>
+                    <p>Its easy we will help you</p>
+                    <button>Create Playlist</button>
+                </div>
+                <div class="CreatepodcastButtonContainer">
+                    <h3>Lets find some podcasts to follow</h3>
+                    <p>we will keep you updated on new episodes</p>
+                    <button>Create Podcast</button>
+                </div>
+            </div>
+            <div class="lowerLHSideBar">
+                <ul>
+                    <li><a href="#">legal</a></li>
+                    <li><a href="#">Safety & Privacy Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">About Ads</a></li>
+                    <li><a href="#">Accessiblity</a></li>
+                </ul>
+                <div class="Language-btn">
+                    <img src="globe-world.256x256.png" alt="#">
+                    <button>English</button>
+
+                </div>
+    
+            </div>
+        </aside>
+        <section class="main-section">
+           
+        </section>
+
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
